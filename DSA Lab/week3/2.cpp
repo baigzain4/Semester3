@@ -1,4 +1,4 @@
-// Selection sort: place the minimum element at start6 by sqpping
+// Selection sort: place the minimum element at start by swapping
 
 #include <iostream>
 using namespace std;
@@ -7,7 +7,7 @@ void selectionSort(int arr[],int n){
     for(int i= 0;i<n -1;i++){
         int least = i;
         for(int j = i+1;j <n;j++){
-            if(arr[i]>arr[j]){
+            if(arr[least]>arr[j]){
                 least = j;
             }
         }
@@ -18,7 +18,7 @@ void selectionSort(int arr[],int n){
 
 
 int main(){
-    int arr[] = {2,3,4,3,1};
+    int arr[] = {0,9,4,3,1};
     int n = 5;
     selectionSort(arr,n);
     for(int i = 0;i<n;i++){
