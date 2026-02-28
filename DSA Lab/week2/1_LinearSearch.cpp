@@ -7,7 +7,7 @@ int linearSearch(int arr[], int size, int target){
             return i;
         }
     }
-    return 1;
+    return -1;
 }
 int main(){
     int size, search;
@@ -22,7 +22,7 @@ int main(){
     cin >> search;
 
     int result = linearSearch(array,size,search);
-    if(search != 1){
+    if(search != -1){
         cout << "Your Search found at index: " << result << endl;
     }
     else{
