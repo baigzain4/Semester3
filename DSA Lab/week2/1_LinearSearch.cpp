@@ -9,6 +9,9 @@ int linearSearch(int arr[], int size, int target){
     }
     return -1;
 }
+
+// TIme Complexity: Best Case: Big Omega(1), Average Case: Theta(n), Worst Case: O(n)
+
 int main(){
     int size, search;
     int *array = new int[size];
