@@ -1,7 +1,3 @@
-// Infix → Postfix Conversion: Convert infix expression (A+B)*C into postfix form A B +
-// C *.
-// Hint: Use a stack for operators.
-// Pop from the stack when precedence is higher or equal before pushing a new operator
 
 #include<iostream>
 using namespace std;
@@ -29,11 +25,14 @@ class Stack{
         if (op1 == '+' || op1 == '-'){
             return 1;
         }
-        else if( op1 == '*' && op1 == '/'){
+        else if( op1 == '*' || op1 == '/'){
             return 2;
         }
         else if(op1 == '^' ){
             return 3;
+        }
+        else if(op1 == '('){
+            return 0;
         }
         return -1;
      }
@@ -45,7 +44,7 @@ class Stack{
             if((current >= 'A' && current <= 'Z') || (current>= 'a' && current <= 'z')){
                 postfix += current;
             }
-            else if(current == '-' || current == '+' || current == '*' || current == '/'){
+            else if(current == '-' || current == '+' || current == '*' || current == '/' || current == '^'){
                 while(top != -1 && precedenceAlgorithm(stack[top])>=precedenceAlgorithm(current)){   
                         postfix += stack[top];
                         pop();
@@ -63,15 +62,16 @@ class Stack{
                 pop();
             }
         }
-        while(top != -1){
-            postfix += stack[top--];
+        while(!isEmpty()){
+            postfix += stack[top];
+            pop();
         }
         return postfix;
      }
 };
 
 int main(){
-    string input = "(A+B)*C";
+    string input = "((A+B)*C-(D-E))^(F+G)";
     Stack s;
     cout << s.converter(input) << endl;
 
