@@ -1,4 +1,6 @@
-// Selection sort: place the minimum element at start by swapping
+// Selection sort:
+// 👉 Idea:
+// Repeatedly select the smallest element from the unsorted part and place it at the beginning.
 
 #include <iostream>
 using namespace std;
@@ -8,10 +10,12 @@ void selectionSort(int arr[],int n){
         int least = i;
         for(int j = i+1;j <n;j++){
             if(arr[least]>arr[j]){
-                least = j;
+                least = j; // update index of smallest element
             }
         }
-        swap(arr[i],arr[least]);
+        int temp = arr[i];
+        arr[i] = arr[least];
+        arr[least] = temp;
     }
 }
 
