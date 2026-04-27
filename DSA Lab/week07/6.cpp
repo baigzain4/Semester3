@@ -4,7 +4,7 @@ using namespace std;
 #define MAXelements 100
 
 class Stack{
-    char arr[MAXelements];
+    int arr[MAXelements];
     int top;
    public:
     Stack(){
@@ -53,35 +53,35 @@ class Stack{
         int result = 0;
         for(int i = 0;i<input.length();i++){
             char current = input[i];
-            if(current != '+' && current != '*' && current != '-' && current != '*'){
-                push(current);
+            if(current>='0' && current <= '9'){
+                push(current - '0');
             }
             else{
-                int num1 = arr[top] - '0';
+                int num1 = arr[top] ;
                 pop();
-                int num2 = arr[top] - '0';
+                int num2 = arr[top];
                 pop();
 
                 if(current == '+'){
                     result = num1+num2;
-                    push(result + '0');
+                    push(result);
                 }
                 else if(current == '-'){
                     result = num1-num2;
-                    push(result + '0');
+                    push(result);
                 }
                 else if(current == '*'){
                     result = num1*num2;
-                    push(result + '0');
+                    push(result);
                 }
                 else if(current == '/'){
                     result = num1/num2;
-                    push(result + '0');
+                    push(result );
                 }
             }
         }
 
-        int output = arr[top] - '0';
+        int output = arr[top];
         return output;
     }
 
